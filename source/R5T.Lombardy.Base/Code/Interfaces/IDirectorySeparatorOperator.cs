@@ -10,21 +10,29 @@ namespace R5T.Lombardy
         char InvalidDirectorySeparatorChar { get; }
         char WindowsDirectorySeparatorChar { get; }
         char NonWindowsDirectorySeparatorChar { get; }
+        char ExecutingMachineDefaultDirectorySeparatorChar { get; }
         char PlatformDefaultDirectorySeparatorChar { get; }
-        char DefaultDirectorySeparatorChar { get; }
+        char DefaultDirectorySeparatorChar { get; set; }
 
         string InvalidDirectorySeparator { get; }
         string WindowsDirectorySeparator { get; }
         string NonWindowsDirectorySeparator { get; }
+        string ExecutingMachineDefaultDirectorySeparator { get; }
         string PlatformDefaultDirectorySeparator { get; }
-        string DefaultDirectorySeparator { get; }
+        string DefaultDirectorySeparator { get; set; }
 
+
+        void ResetDefaultDirectorySeparator();
 
         char GetDirectorySeparatorCharForPlatform(Platform platform);
         string GetDirectorySeparatorForPlatform(Platform platform);
+        Platform GetPlatformForDirectorySeparator(char directorySeparator);
+        Platform GetPlatformForDirectorySeparator(string directorySeparator);
 
         char GetDirectorySeparatorStringToCharUnchecked(string directorySeparator);
+        char GetDirectorySeparatorStringToChar(string directorySeparator);
         string GetDirectorySeparatorCharToStringUnchecked(char directorySeparatorChar);
+        string GetDirectorySeparatorCharToString(char directorySeparatorChar);
 
         bool IsInvalid(char directorySeparator);
         bool IsValid(char directorySeparator);
@@ -65,8 +73,8 @@ namespace R5T.Lombardy
         string DetectDirectorySeparator(string pathSegment);
         string DetectDirectorySeparatorOrDefault(string pathSegment);
         string DetectDirectorySeparatorOrDefault(string pathSegment, string defaultDirectorySeparator);
-        string DetectDirectorySeparatorOrWindows(string pathSegment);
-        string DetectDirectorySeparatorOrNonWindows(string pathSegment);
+        string DetectDirectorySeparatorOrDefaultWindows(string pathSegment);
+        string DetectDirectorySeparatorOrDefaultNonWindows(string pathSegment);
 
         bool IsDirectorySeparatorDetected(string pathSegment);
         bool IsDirectorySeparatorDetectedUnchecked(string pathSegment, string directorySeparator);
@@ -75,13 +83,19 @@ namespace R5T.Lombardy
         bool IsWindowsDirectorySeparatorDetectedAssumeWindows(string pathSegment);
         bool IsNonWindowsDirectorySeparatorDetected(string pathSegment);
         bool IsNonWindowsDirectorySeparatorDetectedAssumeNonWindows(string pathSegment);
-        bool HasMixedDirectorySeparators(string pathSegment);
-        bool ContainsDirectorySeparator(string pathSegment); // See bool IsDirectorySeparatorDetected(string pathSegment).
-        bool ContainsDirectorySeparatorUnchecked(string pathSegment, string directorySeparator); // See bool IsDirectorySeparatorDetectedUnchecked(string pathSegment, string directorySeparator).
-        bool ContainsDirectorySeparator(string pathSegment, string directorySeparator); // See bool IsDirectorySeparatorDetected(string pathSegment, string directorySeparator);
-        bool ContainsWindowsDirectorySeparator(string pathSegment); // See bool IsWindowsDirectorySeparatorDetected(string pathSegment).
-        bool ContainsNonWindowsDirectorySeparator(string pathSegment); // See bool IsNonWindowsDirectorySeparatorDetected(string pathSegment).
-        bool ContainsMixedDirectorySeparator(string pathSegment); // bool HasMixedDirectorySeparators(string pathSegment).
+        bool IsMixedDirectorySeparatorsDetected(string pathSegment);
+
+        bool ContainsDirectorySeparator(string pathSegment);
+        bool ContainsDirectorySeparatorUnchecked(string pathSegment, string directorySeparator);
+        bool ContainsDirectorySeparator(string pathSegment, string directorySeparator);
+        bool ContainsWindowsDirectorySeparator(string pathSegment);
+        bool ContainsNonWindowsDirectorySeparator(string pathSegment);
+        bool ContainsMixedDirectorySeparator(string pathSegment);
+
+        bool TryGetDominantDirectorySeparator(string pathSegment, out string dominantDirectorySeparator);
+        string GetDominantDirectorySeparator(string pathSegment);
+        bool TryGetDominantDirectorySeparatorPlatform(string pathSegment, out Platform platform);
+        Platform GetDominantDirectorySeparatorPlatform(string pathSegment);
 
         string GetInvalidDirectorySeparatorExceptionMessage(string invalidDirectorySeparator);
         Exception GetInvalidDirectorySeparatorException(string invalidDirectorySeparator);
@@ -92,5 +106,8 @@ namespace R5T.Lombardy
         string GetNonWindowsDirectorySeparatorExpectedExceptionMessage(string notNonWindowsDirectorySeparator);
         Exception GetNonWindowsDirectorySeparatorExpectedException(string notNonWindowsDirectorySeparator);
         ArgumentException GetNonWindowsDirectorySeparatorExpectedArgumentException(string found, string parameterName);
+        string GetUnableToDetectDirectorySeparatorExceptionMessage(string pathSegment);
+        Exception GetUnableToDetectDirectorySeparatorException(string pathSegment);
+        ArgumentException GetUnableToDetectDirectorySeparatorArgumentException(string pathSegment, string parameterName);
     }
 }
