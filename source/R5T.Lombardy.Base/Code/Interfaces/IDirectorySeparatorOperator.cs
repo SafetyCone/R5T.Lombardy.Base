@@ -73,8 +73,8 @@ namespace R5T.Lombardy
         string DetectDirectorySeparator(string pathSegment);
         string DetectDirectorySeparatorOrDefault(string pathSegment);
         string DetectDirectorySeparatorOrDefault(string pathSegment, string defaultDirectorySeparator);
-        string DetectDirectorySeparatorOrDefaultWindows(string pathSegment);
-        string DetectDirectorySeparatorOrDefaultNonWindows(string pathSegment);
+        string DetectDirectorySeparatorOrWindows(string pathSegment);
+        string DetectDirectorySeparatorOrNonWindows(string pathSegment);
 
         bool IsDirectorySeparatorDetected(string pathSegment);
         bool IsDirectorySeparatorDetectedUnchecked(string pathSegment, string directorySeparator);
