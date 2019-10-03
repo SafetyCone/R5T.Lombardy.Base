@@ -9,9 +9,14 @@ namespace R5T.Lombardy.Base
     /// </summary>
     interface IDirectoryNameOperationsListing
     {
-        char DefaultDirectoryNameSegmentSeparator { get; }
+        char DefaultDirectoryNameSegmentSeparatorChar { get; } // Done in: DirectoryName
+        string DefaultDirectoryNameSegmentSeparator { get; } // Done in: DirectoryName
 
-        string CurrentDirectoryName { get; }
-        string ParentDirectoryName { get; }
+        string CurrentDirectoryName { get; } // Done in: DirectoryName
+        string ParentDirectoryName { get; } // Done in: DirectoryName
+
+        string[] RelativeDirectoryNames { get; } // Done in: DirectoryName
+
+        bool IsRelativeDirectoryName(string directoryName); // Done in: DirectoryName
     }
 }

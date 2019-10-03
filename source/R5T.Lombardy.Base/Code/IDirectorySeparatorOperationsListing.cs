@@ -17,6 +17,7 @@ namespace R5T.Lombardy.Base
         char ExecutingMachineDefaultDirectorySeparatorChar { get; } // Done in: DirectorySeparator, DirectorySeparatorOperator
         char PlatformDefaultDirectorySeparatorChar { get; } // Done in: DirectorySeparator, DirectorySeparatorOperator
         char DefaultDirectorySeparatorChar { get; set; } // Done in: DirectorySeparator, DirectorySeparatorOperator
+        char[] ValidDirectorySeparatorChars { get; } // Done in: DirectorySeparator, DirectorySeparatorOperator
 
         string InvalidDirectorySeparator { get; } // Done in: DirectorySeparator, DirectorySeparatorOperator
         string WindowsDirectorySeparator { get; } // Done in: DirectorySeparator, DirectorySeparatorOperator
@@ -24,6 +25,7 @@ namespace R5T.Lombardy.Base
         string ExecutingMachineDefaultDirectorySeparator { get; } // Done in: DirectorySeparator, DirectorySeparatorOperator
         string PlatformDefaultDirectorySeparator { get; } // Done in: DirectorySeparator, DirectorySeparatorOperator
         string DefaultDirectorySeparator { get; set; } // Done in: DirectorySeparator, DirectorySeparatorOperator
+        string[] ValidDirectorySeparators { get; } // Done in: DirectorySeparator, DirectorySeparatorOperator
 
 
         void ResetDefaultDirectorySeparator(); // Done in: DirectorySeparator, DirectorySeparatorOperator
@@ -79,6 +81,8 @@ namespace R5T.Lombardy.Base
         string DetectDirectorySeparatorOrDefault(string pathSegment, string defaultDirectorySeparator); // Done in: DirectorySeparator, DirectorySeparatorOperator
         string DetectDirectorySeparatorOrWindows(string pathSegment); // (Extension) Done in: DirectorySeparator, DirectorySeparatorOperator
         string DetectDirectorySeparatorOrNonWindows(string pathSegment); // (Extension) Done in: DirectorySeparator, DirectorySeparatorOperator
+        string DetectDirectorySeparatorOrInvalid(string pathSegment); // (Extension) Done in: DirectorySeparator, DirectorySeparatorOperator
+        string DetectDirectorySeparatorOrDefault(params string[] pathSegments); // (Extension) Done in: DirectorySeparator, DirectorySeparatorOperator
 
         bool IsDirectorySeparatorDetected(string pathSegment); // Done in: DirectorySeparator, DirectorySeparatorOperator
         bool IsDirectorySeparatorDetectedUnchecked(string pathSegment, string directorySeparator); // Done in: DirectorySeparator, DirectorySeparatorOperator
@@ -101,6 +105,9 @@ namespace R5T.Lombardy.Base
         bool TryGetDominantDirectorySeparatorPlatform(string pathSegment, out Platform platform); // Done in: DirectorySeparator, DirectorySeparatorOperator
         Platform GetDominantDirectorySeparatorPlatform(string pathSegment); // Done in: DirectorySeparator, DirectorySeparatorOperator
 
+
+        #region Exceptions
+
         string GetInvalidDirectorySeparatorExceptionMessage(string invalidDirectorySeparator); // Done in: DirectorySeparator, DirectorySeparatorOperator
         Exception GetInvalidDirectorySeparatorException(string invalidDirectorySeparator); // Done in: DirectorySeparator, DirectorySeparatorOperator
         ArgumentException GetInvalidDirectorySeparatorArgumentException(string invalidDirectorySeparator, string parameterName); // Done in: DirectorySeparator, DirectorySeparatorOperator
@@ -113,5 +120,7 @@ namespace R5T.Lombardy.Base
         string GetUnableToDetectDirectorySeparatorExceptionMessage(string pathSegment); // Done in: DirectorySeparator,
         Exception GetUnableToDetectDirectorySeparatorException(string pathSegment); // Done in: DirectorySeparator,
         ArgumentException GetUnableToDetectDirectorySeparatorArgumentException(string pathSegment, string parameterName); // Done in: DirectorySeparator,
+
+        #endregion
     }
 }

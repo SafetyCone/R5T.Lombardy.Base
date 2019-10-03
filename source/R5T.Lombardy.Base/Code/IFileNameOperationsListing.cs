@@ -9,7 +9,15 @@ namespace R5T.Lombardy.Base
     /// </summary>
     interface IFileNameOperationsListing
     {
-        char DefaultFileNameSegmentSeparatorChar { get; }
-        string DefaultFileNameSegmentSeparator { get; }
+        char DefaultFileNameSegmentSeparatorChar { get; } // Done in: FileName
+
+        string DefaultFileNameSegmentSeparator { get; } // Done in: FileName
+
+
+        string[] GetFileNameSegments(string fileName, string fileNameSegmentSeparator); // Done in: FileName
+
+        string GetFileNameWithoutExtension(string fileName); // Done in: FileName
+
+        string GetFileExtension(string fileName); // Done in: FileName
     }
 }
