@@ -137,12 +137,13 @@ namespace R5T.Lombardy
         string GetDirectoryPathChecked(string directoryPath, string directoryName, string directorySeparator);
         string GetDirectoryPathEnsured(string directoryPath, string directoryName, string directorySeparator);
         string GetDirectoryPath(string directoryPath, string directoryName, string directorySeparator);
+        string GetDirectoryPath(string directoryPath, string directoryName);
 
         // Separate.
         string[] GetPathSegmentsUnchecked(string path, string directorySeparator);
         string[] GetPathSegmentsChecked(string path, string directorySeparator);
         string[] GetPathSegments(string path, string directorySeparator);
-        string[] GetPathSegments(string path);
+        string[] GetPathParts(string path);
 
         string GetFileNamePathSegment(params string[] pathSegments);
 
