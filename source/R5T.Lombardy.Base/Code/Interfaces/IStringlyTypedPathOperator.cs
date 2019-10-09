@@ -144,6 +144,7 @@ namespace R5T.Lombardy
         string[] GetPathSegmentsChecked(string path, string directorySeparator);
         string[] GetPathSegments(string path, string directorySeparator);
         string[] GetPathParts(string path);
+        string[] GetAllPathParts(string path);
 
         string GetFileNamePathSegment(params string[] pathSegments);
 

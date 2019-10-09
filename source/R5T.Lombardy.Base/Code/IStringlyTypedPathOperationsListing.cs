@@ -157,6 +157,7 @@ namespace R5T.Lombardy.Base
         string[] GetPathSegmentsChecked(string path, string directorySeparator); // Directory separator is checked, path is not. // Done in: StringlyTypedPath, StringlyTypedPathOperator
         string[] GetPathSegments(string path, string directorySeparator); // Uses -Checked(). // Done in: StringlyTypedPath, StringlyTypedPathOperator
         string[] GetPathParts(string path); // Uses both valid directory separators to split the path full into parts (not segments like the others). // Done in: StringlyTypedPath, StringlyTypedPathOperator
+        string[] GetAllPathParts(string path); // Gets all path parts, even empty ones if the path is directory or root indicated. Uses both valid directory separators to split the path full into parts (not segments like the others). // Done in: StringlyTypedPath, StringlyTypedPathOperator
 
         string GetFileNamePathSegment(params string[] pathSegments); // Done in: StringlyTypedPath, StringlyTypedPathOperator
 
