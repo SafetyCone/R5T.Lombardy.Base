@@ -9,7 +9,7 @@ namespace R5T.Lombardy.Base
     /// </summary>
     interface IFileExtensionOperationsListing
     {
-        char FileExtensionSeparatorChar { get; }
-        string FileExtensionSeparator { get; }
+        char FileExtensionSeparatorChar { get; } // Done in: IFileExtensionOperator, FileExtension, FileExtensionOperator
+        string FileExtensionSeparator { get; } // Done in: IFileExtensionOperator, FileExtension, FileExtensionOperator
     }
 }

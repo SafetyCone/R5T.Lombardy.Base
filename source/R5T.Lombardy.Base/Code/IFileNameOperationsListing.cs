@@ -9,15 +9,24 @@ namespace R5T.Lombardy.Base
     /// </summary>
     interface IFileNameOperationsListing
     {
-        char DefaultFileNameSegmentSeparatorChar { get; } // Done in: FileName
+        char DefaultFileNameSegmentSeparatorChar { get; } // Done in: IFileNameOperator, FileName, FileNameOperator
+        string DefaultFileNameSegmentSeparator { get; } // Done in: IFileNameOperator, FileName, FileNameOperator
 
-        string DefaultFileNameSegmentSeparator { get; } // Done in: FileName
+        // Combine.
+        string GetFileName(string fileNameWithoutExtension, string fileExtension); // Done in: IFileNameOperator, FileName, FileNameOperator
 
+        // Separate.
+        string[] GetFileNameSegments(string fileName, string fileNameSegmentSeparator); // Done in: IFileNameOperator, FileName, FileNameOperator
 
-        string[] GetFileNameSegments(string fileName, string fileNameSegmentSeparator); // Done in: FileName
+        string GetFileNameWithoutExtension(string fileName); // Done in: IFileNameOperator, FileName, FileNameOperator
+        string GetFileExtension(string fileName); // Done in: IFileNameOperator, FileName, FileNameOperator
 
-        string GetFileNameWithoutExtension(string fileName); // Done in: FileName
-
-        string GetFileExtension(string fileName); // Done in: FileName
+        // Miscellaneous.
+        string GetRandomFileNameWithoutExtension(); // Done in: IFileNameOperator, FileName, FileNameOperator
+        string GetRandomFileName(); // Uses temporary file extension. Done in: IFileNameOperator, FileName, FileNameOperator
+        string GetRandomFileName(string fileExtension); // Done in: IFileNameOperator, FileName, FileNameOperator
+        string GetGUIDedFileNameWithoutExtension(); // Done in: IFileNameOperator, FileName, FileNameOperator
+        string GetGUIDedFileName(); // Done in: IFileNameOperator, FileName, FileNameOperator
+        string GetGUIDedFileName(string fileExtension); // Done in: IFileNameOperator, FileName, FileNameOperator
     }
 }
