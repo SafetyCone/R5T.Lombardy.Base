@@ -30,10 +30,10 @@ namespace R5T.Lombardy.Base
 
         void ResetDefaultDirectorySeparator(); // Done in: DirectorySeparator, DirectorySeparatorOperator
 
-        char GetDirectorySeparatorCharForPlatform(Platform platform); // Done in: DirectorySeparator, DirectorySeparatorOperator
-        string GetDirectorySeparatorForPlatform(Platform platform); // Done in: DirectorySeparator, DirectorySeparatorOperator
-        Platform GetPlatformForDirectorySeparator(char directorySeparator); // Done in: DirectorySeparator, DirectorySeparatorOperator
-        Platform GetPlatformForDirectorySeparator(string directorySeparator); // Done in: DirectorySeparator, DirectorySeparatorOperator
+        //char GetDirectorySeparatorCharForPlatform(Platform platform); // Done in: DirectorySeparator, DirectorySeparatorOperator
+        //string GetDirectorySeparatorForPlatform(Platform platform); // Done in: DirectorySeparator, DirectorySeparatorOperator
+        //Platform GetPlatformForDirectorySeparator(char directorySeparator); // Done in: DirectorySeparator, DirectorySeparatorOperator
+        //Platform GetPlatformForDirectorySeparator(string directorySeparator); // Done in: DirectorySeparator, DirectorySeparatorOperator
 
         char GetDirectorySeparatorStringToCharUnchecked(string directorySeparator); // Done in: DirectorySeparator, DirectorySeparatorOperator
         char GetDirectorySeparatorStringToChar(string directorySeparator); // Done in: DirectorySeparator, DirectorySeparatorOperator
@@ -102,8 +102,8 @@ namespace R5T.Lombardy.Base
 
         bool TryGetDominantDirectorySeparator(string pathSegment, out string dominantDirectorySeparator); // Done in: DirectorySeparator, DirectorySeparatorOperator
         string GetDominantDirectorySeparator(string pathSegment); // Done in: DirectorySeparator, DirectorySeparatorOperator
-        bool TryGetDominantDirectorySeparatorPlatform(string pathSegment, out Platform platform); // Done in: DirectorySeparator, DirectorySeparatorOperator
-        Platform GetDominantDirectorySeparatorPlatform(string pathSegment); // Done in: DirectorySeparator, DirectorySeparatorOperator
+        //bool TryGetDominantDirectorySeparatorPlatform(string pathSegment, out Platform platform); // Done in: DirectorySeparator, DirectorySeparatorOperator
+        //Platform GetDominantDirectorySeparatorPlatform(string pathSegment); // Done in: DirectorySeparator, DirectorySeparatorOperator
 
 
         #region Exceptions

@@ -24,10 +24,10 @@ namespace R5T.Lombardy
 
         void ResetDefaultDirectorySeparator();
 
-        char GetDirectorySeparatorCharForPlatform(Platform platform);
-        string GetDirectorySeparatorForPlatform(Platform platform);
-        Platform GetPlatformForDirectorySeparator(char directorySeparator);
-        Platform GetPlatformForDirectorySeparator(string directorySeparator);
+        //char GetDirectorySeparatorCharForPlatform(Platform platform);
+        //string GetDirectorySeparatorForPlatform(Platform platform);
+        //Platform GetPlatformForDirectorySeparator(char directorySeparator);
+        //Platform GetPlatformForDirectorySeparator(string directorySeparator);
 
         char GetDirectorySeparatorStringToCharUnchecked(string directorySeparator);
         char GetDirectorySeparatorStringToChar(string directorySeparator);
@@ -94,8 +94,8 @@ namespace R5T.Lombardy
 
         bool TryGetDominantDirectorySeparator(string pathSegment, out string dominantDirectorySeparator);
         string GetDominantDirectorySeparator(string pathSegment);
-        bool TryGetDominantDirectorySeparatorPlatform(string pathSegment, out Platform platform);
-        Platform GetDominantDirectorySeparatorPlatform(string pathSegment);
+        //bool TryGetDominantDirectorySeparatorPlatform(string pathSegment, out Platform platform);
+        //Platform GetDominantDirectorySeparatorPlatform(string pathSegment);
 
         string GetInvalidDirectorySeparatorExceptionMessage(string invalidDirectorySeparator);
         Exception GetInvalidDirectorySeparatorException(string invalidDirectorySeparator);
