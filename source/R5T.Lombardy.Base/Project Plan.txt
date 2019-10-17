@@ -1,4 +1,9 @@
 R5T.Lombardy.Base - The base abstractions library for the Lombardy endeavor of creating a test-fixtures NuGet package for and implementation of a stringly-typed path operator.
 
+TODO:
+
+* Add a GetDirectoryPath() that takes *many* directory names as params. (Will need some directory renaming work.)
+
+
 Goals
 
