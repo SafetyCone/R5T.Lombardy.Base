@@ -4,6 +4,31 @@ using System.IO;
 using System.Linq;
 
 
+namespace System
+{
+    using R5T.Lombardy;
+
+
+    public static class IStringlyTypedPathOperatorExtensions
+    {
+        public static bool IsFileInDirectory(this IStringlyTypedPathOperator stringlyTypedPathOperator,
+            string filePath,
+            string directoryPath)
+        {
+            // TODO: improve logic to handle different directory separator chars.
+            var filePathAtLeastAsLongAsDirectoryPath = filePath.Length > directoryPath.Length; // Greeater than, since file path must also include file name.
+            if(!filePathAtLeastAsLongAsDirectoryPath)
+            {
+                return false;
+            }
+
+            var output = filePath.Substring(0, directoryPath.Length) == directoryPath;
+            return output;
+        }
+    }
+}
+
+
 namespace R5T.Lombardy
 {
     public static class IStringlyTypedPathOperatorExtensions
