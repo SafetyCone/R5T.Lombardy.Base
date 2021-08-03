@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+using R5T.Magyar;
+
 
 namespace System
 {
@@ -11,18 +13,51 @@ namespace System
 
     public static class IStringlyTypedPathOperatorExtensions
     {
-        public static bool IsFileInDirectory(this IStringlyTypedPathOperator stringlyTypedPathOperator,
-            string filePath,
-            string directoryPath)
+        /// <summary>
+        /// Note: also produces true if the <paramref name="directoryPath"/> is the <paramref name="potentialParentDirectoryPath"/>.
+        /// </summary>
+        public static bool IsDirectoryInDirectory(this IStringlyTypedPathOperator stringlyTypedPathOperator,
+            string directoryPath,
+            string potentialParentDirectoryPath)
         {
-            // TODO: improve logic to handle different directory separator chars.
-            var filePathAtLeastAsLongAsDirectoryPath = filePath.Length > directoryPath.Length; // Greeater than, since file path must also include file name.
-            if(!filePathAtLeastAsLongAsDirectoryPath)
+            // Quickly test whether the directory path is at least long enough to either be, or be in, the potential parent path.
+            var directoryPathIsAtLeastLongEnough = directoryPath.Length >= potentialParentDirectoryPath.Length; // Greater than or equal to, since the two paths might be the same.
+            if (!directoryPathIsAtLeastLongEnough)
             {
                 return false;
             }
 
-            var output = filePath.Substring(0, directoryPath.Length) == directoryPath;
+            // In order to use string comparison, ensure that the two paths are using the same directory separator.
+            var windowsDirectoryPath = stringlyTypedPathOperator.EnsureWindowsDirectorySeparator(directoryPath);
+            var windowsPotentialParentDirectoryPath = stringlyTypedPathOperator.EnsureWindowsDirectorySeparator(directoryPath);
+
+            var output = windowsDirectoryPath.BeginsWith(windowsPotentialParentDirectoryPath);
+            return output;
+        }
+
+        public static bool IsEmptyPath(this IStringlyTypedPathOperator _,
+            string path)
+        {
+            var output = path == Strings.Empty;
+            return output;
+        }
+
+        public static bool IsFileInDirectory(this IStringlyTypedPathOperator stringlyTypedPathOperator,
+            string filePath,
+            string potentialParentDirectoryPath)
+        {
+            // Quickly test whether the file path is at least as long as the potential parent path.
+            var filePathIsAtLeastLongEnough = filePath.Length > potentialParentDirectoryPath.Length; // Greater than, since file path must also include file name.
+            if(!filePathIsAtLeastLongEnough)
+            {
+                return false;
+            }
+
+            // In order to use string comparison, ensure that the two paths are using the same directory separator.
+            var windowsFilePath = stringlyTypedPathOperator.EnsureWindowsDirectorySeparator(filePath);
+            var windowsPotentialParentDirectoryPath = stringlyTypedPathOperator.EnsureWindowsDirectorySeparator(potentialParentDirectoryPath);
+
+            var output = windowsFilePath.BeginsWith(windowsPotentialParentDirectoryPath);
             return output;
         }
     }
