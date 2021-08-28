@@ -38,7 +38,7 @@ namespace System
         public static bool IsEmptyPath(this IStringlyTypedPathOperator _,
             string path)
         {
-            var output = path == Strings.Empty;
+            var output = path == Strings.Empty || path == Strings.Slash || path == Strings.Backslash;
             return output;
         }
 
