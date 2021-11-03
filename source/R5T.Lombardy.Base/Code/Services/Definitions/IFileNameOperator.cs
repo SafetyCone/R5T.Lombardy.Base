@@ -1,9 +1,12 @@
 ﻿using System;
 
+using R5T.T0064;
+
 
 namespace R5T.Lombardy
 {
-    public interface IFileNameOperator
+    [ServiceDefinitionMarker]
+    public interface IFileNameOperator : IServiceDefinition
     {
         char DefaultFileNameSegmentSeparatorChar { get; }
         string DefaultFileNameSegmentSeparator { get; }

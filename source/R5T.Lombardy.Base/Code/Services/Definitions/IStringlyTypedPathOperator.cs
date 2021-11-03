@@ -1,9 +1,12 @@
 ﻿using System;
 
+using R5T.T0064;
+
 
 namespace R5T.Lombardy
 {
-    public interface IStringlyTypedPathOperator
+    [ServiceDefinitionMarker]
+    public interface IStringlyTypedPathOperator : IServiceDefinition
     {
         bool ExistsFilePath(string filePath);
         bool ExistsDirectoryPath(string directoryPath);
